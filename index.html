@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="connect4.css">
+        <script src="connect4.js"></script>
+    </head>
+    <body class="normal">
+        <div id="menu" class="menuGrid">
+            <div class="menuCell1"></div>
+            <div class="usernameContainer">
+                <p class="welcome">Welcome to Connect-4</p>
+                <input class="usernameInput" type="text" id="username" maxlength="30" oninput="changeUsername()" autocomplete="off">
+                <p class="usernameInfo">Edit to change username</p>
+            </div>
+            <div class="menuCell2"></div>
+            <div class="gameJoiningContainer">
+                <div class="roomIDContainer">
+                    <p class="joinText">Your unique <span class="bold">room ID</span> is</p>
+                    <input class="joinInput" type="text" id="roomID" maxlength="9" readonly>
+                    <button class="copyButton" onclick="copyID()">Copy</button>
+                </div>
+                <div class="joinByRoomIDContainer">
+                    <p class="joinText">If you know another player's room ID, enter it below to <span class="bold">play against them</span></p>
+                    <input class="joinInput" type="text" id="joinRoomID" placeholder="Room ID" maxlength="9">
+                    <button class="playButton" onclick="joinRoom()">Play</button>
+                    <p class="invalidText transparent">Room ID invalid or game already in progress</p>
+                </div>
+                <div class="randomGameContainer">
+                    <p class="joinText">To start a <span class="bold">random game</span> click here</p>
+                    <button class="randomButton" onclick="joinRandomRoom()">Random</button>
+                    <p class="waitingText transparent">Waiting for opponent</p>
+                </div>
+            </div>
+            <div class="themeContainer theme">
+                <p>Theme</p> 
+                <label for="normalMenu">Normal
+                    <input type="radio" id="normalMenu" name="themeMenu" value="normal">
+                    <span class="radioButton"></span>
+                </label>
+                <label for="darkMenu">Dark
+                    <input type="radio" id="darkMenu" name="themeMenu" value="dark">
+                    <span class="radioButton"></span>
+                </label>
+                <label for="pastelMenu">Pastel
+                    <input type="radio" id="pastelMenu" name="themeMenu" value="pastel">
+                    <span class="radioButton"></span>
+                </label>
+            </div>
+        </div>
+        <div id="game" class="hidden">
+            <div class="playArea">
+                <div class="rowAbove">
+                    <div class="cell" name="cell_0"></div>
+                    <div class="cell" name="cell_1"></div>
+                    <div class="cell" name="cell_2"></div>
+                    <div class="cell" name="cell_3"></div>
+                    <div class="cell" name="cell_4"></div>
+                    <div class="cell" name="cell_5"></div>
+                    <div class="cell" name="cell_6"></div>
+                </div>
+                <div class="arrowRow">
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                </div>
+                <div class="board">
+                    <div class="row topRow">
+                        <div class="cell" name="cell_5-0"></div>
+                        <div class="cell" name="cell_5-1"></div>
+                        <div class="cell" name="cell_5-2"></div>
+                        <div class="cell" name="cell_5-3"></div>
+                        <div class="cell" name="cell_5-4"></div>
+                        <div class="cell" name="cell_5-5"></div>
+                        <div class="cell" name="cell_5-6"></div>
+                    </div>
+                    <div class="break"></div>
+                    <div class="row">
+                        <div class="cell" name="cell_4-0"></div>
+                        <div class="cell" name="cell_4-1"></div>
+                        <div class="cell" name="cell_4-2"></div>
+                        <div class="cell" name="cell_4-3"></div>
+                        <div class="cell" name="cell_4-4"></div>
+                        <div class="cell" name="cell_4-5"></div>
+                        <div class="cell" name="cell_4-6"></div>
+                    </div>
+                    <div class="break"></div>
+                    <div class="row">
+                        <div class="cell" name="cell_3-0"></div>
+                        <div class="cell" name="cell_3-1"></div>
+                        <div class="cell" name="cell_3-2"></div>
+                        <div class="cell" name="cell_3-3"></div>
+                        <div class="cell" name="cell_3-4"></div>
+                        <div class="cell" name="cell_3-5"></div>
+                        <div class="cell" name="cell_3-6"></div>
+                    </div>
+                    <div class="break"></div>
+                    <div class="row">
+                        <div class="cell" name="cell_2-0"></div>
+                        <div class="cell" name="cell_2-1"></div>
+                        <div class="cell" name="cell_2-2"></div>
+                        <div class="cell" name="cell_2-3"></div>
+                        <div class="cell" name="cell_2-4"></div>
+                        <div class="cell" name="cell_2-5"></div>
+                        <div class="cell" name="cell_2-6"></div>
+                    </div>
+                    <div class="break"></div>
+                    <div class="row">
+                        <div class="cell" name="cell_1-0"></div>
+                        <div class="cell" name="cell_1-1"></div>
+                        <div class="cell" name="cell_1-2"></div>
+                        <div class="cell" name="cell_1-3"></div>
+                        <div class="cell" name="cell_1-4"></div>
+                        <div class="cell" name="cell_1-5"></div>
+                        <div class="cell" name="cell_1-6"></div>
+                    </div>
+                    <div class="break"></div>
+                    <div class="row botRow">
+                        <div class="cell" name="cell_0-0"></div>
+                        <div class="cell" name="cell_0-1"></div>
+                        <div class="cell" name="cell_0-2"></div>
+                        <div class="cell" name="cell_0-3"></div>
+                        <div class="cell" name="cell_0-4"></div>
+                        <div class="cell" name="cell_0-5"></div>
+                        <div class="cell" name="cell_0-6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="infoArea">
+                <div class="theme">
+                    <p>Theme</p> 
+                    <label for="normalGame">Normal
+                        <input type="radio" id="normalGame" name="themeGame" value="normal">
+                        <span class="radioButton"></span>
+                    </label>
+                    <label for="darkGame">Dark
+                        <input type="radio" id="darkGame" name="themeGame" value="dark">
+                        <span class="radioButton"></span>
+                    </label>
+                    <label for="pastelGame">Pastel
+                        <input type="radio" id="pastelGame" name="themeGame" value="pastel">
+                        <span class="radioButton"></span>
+                    </label>
+                </div>
+                <div class="gameState">
+                    <p></p>
+                </div>
+                <button class="returnToMenuButton hidden" onclick="returnToMenu()">Return to Menu</button>
+            </div>
+        </div>
+    </body>
+</html> 

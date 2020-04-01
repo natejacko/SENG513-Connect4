@@ -1,0 +1,717 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.menuGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100%;
+}
+
+.usernameContainer { 
+    grid-area: 1 / 3 / 2 / 5; 
+}
+
+.welcome {
+    width: 100%;
+    text-align: center;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+.usernameInput {
+    width: 80%;
+    margin-left: 10%;
+    padding: 5px;
+    font-size: 30px;
+    text-align: center;
+
+    border-radius: 5px;
+}
+
+.usernameInput:focus {
+    outline: none;
+}
+
+.usernameInfo {
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.menuCell1 {
+    grid-area: 1 / 2 / 2 / 3;
+    width: 86px;
+    height: 86px;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.menuCell2 {
+    grid-area: 1 / 5 / 2 / 6;
+    width: 86px;
+    height: 86px;
+    margin: auto;
+    border-radius: 50%;
+}
+    
+.gameJoiningContainer { 
+    grid-area: 2 / 2 / 6 / 4; 
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+
+    font-size: 24px;
+}
+
+.joinText {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.joinInput {
+    font-size: 20px;
+    width: 125px;
+    text-align: center;
+    padding: 3px;
+}
+
+.joinInput:focus {
+    outline: none;
+}
+
+.copyButton {
+    margin-left: -7px;
+    padding: 3px 10px;
+    font-size: 20px;
+}
+
+.copyButton:focus {
+    outline: none;
+}
+
+.playButton {
+    font-size: 20px;
+    margin-left: 10px;
+    padding: 7px;
+    text-align: center;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.playButton:focus {
+    outline: none;
+}
+
+.invalidText {
+    font-size: 14px;
+}
+
+.randomButton {
+    font-size: 20px;
+    padding: 7px;
+    text-align: center;
+    width: 40%;
+    margin-left: 20%;
+    border-radius: 5px;
+}
+
+.randomButton:focus {
+    outline: none;
+}
+
+.waitingText {
+    font-size: 14px;
+    margin-left: 20%;
+}
+
+.themeContainer { 
+    grid-area: 2 / 4 / 6 / 6; 
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20%;
+}
+
+.playArea {
+    float: left;
+    margin: 20px;
+}
+
+.rowAbove {
+    display: flex;
+    justify-content: space-between;
+    width: 550px;
+
+    margin: 0 0 10px 12px;
+}
+
+.rowAbove > .cellDisabled {
+    opacity: 0;
+}
+
+.rowAbove > .columnDisabled {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%, auto;
+
+    width: 50px;
+    height: 50px;
+    border-width: 10px;
+
+    cursor: no-drop;
+}
+
+.arrowRow {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+
+    margin: 0 0 10px 37px;
+}
+
+.arrowRow > .arrowDisabled {
+    opacity: 0;
+}
+
+.arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-content: center;
+
+    width: 570px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    margin: 0 10px;
+}
+
+.topRow {
+    margin-top: 10px;
+}
+
+.botRow {
+    margin-bottom: 10px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 10px;
+}
+
+.cell {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.cellDisabled {
+    cursor: default;
+}
+
+.infoArea {
+    float: left;
+    margin-left: 150px;
+    margin-top: 100px;
+    width: 20%;
+}
+
+.theme > p {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.theme > label {
+    font-size: 20px;
+    display: block;
+    position: relative;
+    width: 100px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.theme > label > input {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radioButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+}
+
+.radioButton:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+  
+.theme > label > input:checked ~ .radioButton:after {
+    display: block;
+}
+
+.gameState > p {
+    margin-top: 100px;
+    font-size: 40px;
+}
+
+.returnToMenuButton {
+    font-size: 20px;
+    padding: 7px;
+    text-align: center;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.returnToMenuButton:focus {
+    outline: none;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* THEMES */
+
+/* NORMAL */
+
+.normal {
+    background-color: rgb(255, 255, 255);
+}
+
+.normal > #menu > .menuCell1 {
+    background-color: rgb(255, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.normal > #menu > .menuCell2 {
+    background-color: rgb(255, 255, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.normal > #menu .usernameInput {
+    color: rgb(127, 127, 127);
+    border: 2px solid rgb(127, 127, 127);
+}
+
+.normal > #menu .joinInput {
+    border: 1px solid black;
+}
+
+.normal > #menu .bold {
+    font-weight: 900;
+}
+
+.normal > #menu .copyButton {
+    border: 1px solid black;
+    color: rgb(68, 114, 196);
+    background-color: white;
+}
+
+.normal > #menu .copyButton:focus {
+    background-color: rgb(68, 114, 196);
+}
+
+.normal > #menu .playButton {
+    color: rgb(113, 113, 113);
+    border: 1px solid rgb(113, 113, 133);
+    background-color: rgb(217, 217, 217);
+}
+
+.normal > #menu .invalidText {
+    color: rgb(255, 0, 0);
+}
+
+.normal > #menu .randomButton {
+    color: rgb(113, 113, 113);
+    border: 1px solid rgb(113, 113, 133);
+    background-color: rgb(146, 208, 80)
+}
+
+.normal > #menu .waitingText {
+    color: rgb(68, 114, 196);
+}
+
+.normal > #game > .playArea > .rowAbove > .cell {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(217, 217, 217);
+}
+
+.normal > #game > .playArea > .rowAbove > .columnDisabled {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M0 0 L100 100 ' stroke='rgb(217, 217, 217)' stroke-width='20px'/></svg>");
+    border: 10px solid rgb(217, 217, 217);
+}
+
+.normal > #game > .playArea > .arrowRow > .arrow {
+    border-top: 20px solid rgb(2, 113, 182);
+}
+
+.normal > #game > .playArea > .board {
+    background-color: rgb(2, 113, 182);
+    border: 2px solid rgb(0, 81, 131);
+}
+
+.normal > #game > .playArea > .board > .row > .cell {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.normal > #game > .playArea > .board > .row > .token_p1, .normal > #game > .playArea > .rowAbove > .token_p1 {
+    background-color: rgb(255, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.normal > #game > .playArea > .board > .row > .token_p2, .normal > #game > .playArea > .rowAbove > .token_p2 {
+    background-color: rgb(255, 255, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.normal > #game > .playArea > .board > .row > .token_p1.cellHighlight, .normal > #game > .playArea > .board > .row > .token_p2.cellHighlight {
+    width: 62px;
+    height: 62px;
+    border: 4px solid rgb(99, 223, 255);
+}
+
+.normal > #game > .infoArea {
+    color: rgb(0, 0, 0);
+}
+
+.normal .theme > label > .radioButton {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.normal .theme > label > .radioButton:after {
+    background: rgb(0, 0, 0);
+}
+
+.normal > #game > .infoArea > .gameState > .p1 {
+    color: rgb(255, 0, 0);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.normal > #game > .infoArea > .gameState > .p2 {
+    color: rgb(255, 255, 0);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.normal > #game .returnToMenuButton {
+    color: rgb(113, 113, 113);
+    border: 1px solid rgb(113, 113, 133);
+    background-color: rgb(217, 217, 217);
+}
+
+/* DARK */
+
+.dark {
+    background-color: rgb(38, 38, 38);
+}
+
+.dark > #menu {
+    color: white;
+    font-weight: 300;
+}
+
+.dark > #menu > .menuCell1 {
+    background-color: rgb(61, 92, 249);
+    border: 2px solid rgb(61, 92, 249);
+}
+
+.dark > #menu > .menuCell2 {
+    background-color: rgb(56, 92, 33);
+    border: 2px solid rgb(56, 92, 33);
+}
+
+.dark > #menu .usernameInput {
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(125, 146, 251);
+}
+
+.dark > #menu .joinInput {
+    border: 1px solid white;
+    color: white;   
+    font-weight: 300;
+    background-color: transparent;
+}
+
+.dark > #menu .bold {
+    font-weight: 500;
+    color: rgb(61, 92, 249);
+}
+
+.dark > #menu .copyButton {
+    border: 1px solid white;
+    color: rgb(61, 92, 249);
+    background-color: transparent;
+}
+
+.dark > #menu .copyButton:focus {
+    background-color: rgb(61, 92, 249);
+}
+
+.dark > #menu .playButton {
+    color: white;
+    border: 1px solid rgb(61, 92, 249);
+    background-color: rgb(61, 92, 249);
+}
+
+.dark > #menu .invalidText {
+    font-weight: 300;
+    color: rgb(255, 96, 96);
+}
+
+.dark > #menu .randomButton {
+    color: white;
+    border: 1px solid rgb(61, 92, 249);
+    background-color: rgb(61, 92, 249);
+}
+
+.dark > #menu .waitingText {
+    color: rgb(125, 146, 251);
+}
+
+.dark > #game > .playArea > .rowAbove > .cell {
+    background-color: rgb(38, 38, 38);
+    border: 2px solid rgb(191, 191, 191);
+}
+
+.dark > #game > .playArea > .rowAbove > .columnDisabled {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M0 0 L100 100 ' stroke='rgb(191, 191, 191)' stroke-width='20px'/></svg>");
+    border: 10px solid rgb(191, 191, 191);
+}
+
+.dark > #game > .playArea > .arrowRow > .arrow {
+    border-top: 20px solid rgb(255, 255, 255);
+}
+
+.dark > #game > .playArea > .board {
+    background-color: rgb(127, 127, 127);
+    border: 2px solid rgb(127, 127, 127);
+}
+
+.dark > #game > .playArea > .board > .row > .cell {
+    background-color: rgb(191, 191, 191);
+    border: 2px solid rgb(191, 191, 191);
+}
+
+.dark > #game > .playArea > .board > .row > .token_p1, .dark > #game > .playArea > .rowAbove > .token_p1 {
+    background-color: rgb(61, 92, 249);
+    border: 2px solid rgb(61, 92, 249);
+}
+
+.dark > #game > .playArea > .board > .row > .token_p2, .dark > #game > .playArea > .rowAbove > .token_p2 {
+    background-color: rgb(56, 92, 33);
+    border: 2px solid rgb(56, 92, 33);
+}
+
+.dark > #game > .playArea > .board > .row > .token_p1.cellHighlight, .dark > #game > .playArea > .board > .row > .token_p2.cellHighlight {
+    width: 62px;
+    height: 62px;
+    border: 4px solid rgb(231, 66, 73);
+}
+
+.dark > #game > .infoArea {
+    color: rgb(255, 255, 255);
+}
+
+.dark .theme > label > .radioButton {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.dark .theme > label > .radioButton:after {
+    background: rgb(0, 0, 0);
+}
+
+.dark > #game > .infoArea > .gameState > .p1 {
+    color: rgb(61, 92, 249);
+}
+
+.dark > #game > .infoArea > .gameState > .p2 {
+    color: rgb(92, 158, 52);
+}
+
+.dark > #game .returnToMenuButton {
+    color: white;
+    border: 1px solid rgb(61, 92, 249);
+    background-color: rgb(61, 92, 249);
+}
+
+/* PASTEL */
+
+.pastel {
+    background-color: rgb(233, 251, 248);
+}
+
+.pastel > #menu {
+    color: rgb(100, 100, 100);
+}
+
+.pastel > #menu > .menuCell1 {
+    background-color: rgb(98, 128, 119);
+    border: 2px solid rgb(98, 128, 119);
+}
+
+.pastel > #menu > .menuCell2 {
+    background-color: rgb(203, 155, 255);
+    border: 2px solid rgb(203, 155, 255);
+}
+
+.pastel > #menu .usernameInput {
+    color: rgb(100, 100, 100);
+    border: 2px solid rgb(127, 127, 127);
+    background-color: transparent;
+}
+
+.pastel > #menu .joinInput {
+    border: 1px solid rgb(64, 64, 64);
+    color: rgb(64, 64, 64);
+    background-color: transparent;
+}
+
+.pastel > #menu .bold {
+    font-weight: 500;
+    color: rgb(64, 64, 64);
+}
+
+.pastel > #menu .copyButton {
+    border: 1px solid rgb(64, 64, 64);
+    color: rgb(203, 155, 255);
+    background-color: transparent;
+}
+
+.pastel > #menu .copyButton:focus {
+    background-color: rgb(203, 155, 255);
+}
+
+.pastel > #menu .playButton {
+    color: rgb(100, 100, 100);
+    border: 1px solid rgb(64, 64, 64);
+    background-color: rgb(255, 215, 130);
+}
+
+.pastel > #menu .invalidText {
+    color: rgb(216, 69, 110);
+}
+
+.pastel > #menu .randomButton {
+    color: rgb(100, 100, 100);
+    border: 1px solid rgb(64, 64, 64);
+    background-color: rgb(255, 215, 130);
+}
+
+.pastel > #menu .waitingText {
+    color: rgb(95, 148, 217);
+}
+
+.pastel > #game > .playArea > .rowAbove > .cell {
+    background-color: rgb(233, 251, 248);
+    border: 2px solid rgb(191, 191, 191);
+}
+
+.pastel > #game > .playArea > .rowAbove > .columnDisabled {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M0 0 L100 100 ' stroke='rgb(191, 191, 191)' stroke-width='20px'/></svg>");
+    border: 10px solid rgb(191, 191, 191);
+}
+
+.pastel > #game > .playArea > .arrowRow > .arrow {
+    border-top: 20px solid rgb(255, 215, 130);
+}
+
+.pastel > #game > .playArea > .board {
+    background-color: rgb(255, 215, 130);
+    border: 2px solid rgb(255, 215, 130);
+}
+
+.pastel > #game > .playArea > .board > .row > .cell {
+    background-color: rgb(233, 251, 248);
+    border: 2px solid rgb(233, 251, 248);
+}
+
+.pastel > #game > .playArea > .board > .row > .token_p1, .pastel > #game > .playArea > .rowAbove > .token_p1 {
+    background-color: rgb(98, 128, 119);
+    border: 2px solid rgb(98, 128, 119);
+}
+
+.pastel > #game > .playArea > .board > .row > .token_p2, .pastel > #game > .playArea > .rowAbove > .token_p2 {
+    background-color: rgb(203, 155, 255);
+    border: 2px solid rgb(203, 155, 255);
+}
+
+.pastel > #game > .playArea > .board > .row > .token_p1.cellHighlight, .pastel > #game > .playArea > .board > .row > .token_p2.cellHighlight {
+    width: 62px;
+    height: 62px;
+    border: 4px solid rgb(216, 69, 110);
+}
+
+.pastel > #game > .infoArea {
+    color: rgb(100, 100, 100);
+}
+
+.pastel .theme > label > .radioButton {
+    background-color: rgb(233, 251, 248);
+    border: 1px solid rgb(100, 100, 100);
+}
+
+.pastel .theme > label > .radioButton:after {
+    background: rgb(100, 100, 100);
+}
+
+.pastel > #game > .infoArea > .gameState > .p1 {
+    color: rgb(98, 128, 119);
+}
+
+.pastel > #game > .infoArea > .gameState > .p2 {
+    color: rgb(203, 155, 255);
+}
+
+.pastel > #game .returnToMenuButton {
+    color: rgb(100, 100, 100);
+    border: 1px solid rgb(64, 64, 64);
+    background-color: rgb(255, 215, 130);
+}

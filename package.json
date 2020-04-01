@@ -1,0 +1,15 @@
+{
+  "name": "seng513_connect4",
+  "version": "1.0.0",
+  "description": "Individual Project for SENG513 (Winter 2020). Connect-4 game",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "scripts": {
+    "test": "node server.js 12345",
+    "start": "node server.js"
+  },
+  "author": "Nathan Jackson"
+}
